@@ -7,21 +7,12 @@ dollar_price_bitcoin=$(curl -s https://api.coindesk.com/v1/bpi/currentprice/usd.
 echo "current price in US$: "$dollar_price_bitcoin"$"
 
 curl -s https://www.finanzen.net/devisen/binance-coin-us-dollar-kurs > tmp_file
-#cat tmp_file | grep "div=""" | cut -d'>' -f4 | cut -d'<' -f1
 cat tmp_file | grep "class=\"col-xs-5 col-sm-4 text-sm-right text-nowrap\"" | cut -d'>' -f4 | cut -d'<' -f1
-
-
-#cat tmp_file | grep 'price":"[^"]*' | cut -d'>' -f4 | cut -d'<' -f3
-
 
 
 dollar_price_binance=$(curl -s 'https://api.binance.com/api/v3/ticker/price?symbol=ETHBTC' | jq -r .price)
 echo "current price in US$: "$dollar_price_binance" BTC"
 
-#price1=$(curl -s https://api.binance.com/api/v3/ticker/price?symbol=ETHBTC | grep -o 'price":"[^"]*' | cut -d\" -f3)
-#echo $price1
-
-#https://api.binance.com/api/v3/ticker/pr
 array=( 1JDW13kBD6sDZ1j3eL8na47G6WSbtESjWT
 	1Hgsu5qKCYdUFAwv4aJwUqbD4iPY7Sz7or
 	1HZCfNuYcePyYXmpyz4GivWcVVpAkuMiqw
